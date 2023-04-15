@@ -1,3 +1,3 @@
-# Store
- Sell many products using NodeJS, Javacripts
+# Manage Staffs
+ Project Distributed Database about manage staffs using NodeJS, Javacripts
  
