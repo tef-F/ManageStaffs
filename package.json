@@ -1,0 +1,43 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cookie-parser": "^1.4.6",
+    "date-fns": "^2.29.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-generator": "^4.16.1",
+    "express-handlebars": "^6.0.7",
+    "joi": "^17.8.3",
+    "jsonwebtoken": "^9.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^6.9.1",
+    "mongoose-delete": "^0.5.4",
+    "mongoose-slug-generator": "^1.0.4",
+    "mssql": "^9.1.1",
+    "mysql": "^2.18.1",
+    "node-gyp": "^9.3.1",
+    "prettier": "^2.8.4",
+    "sequelize": "^6.30.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "sass": "^1.58.0"
+  },
+  "name": "manager",
+  "version": "1.0.0",
+  "description": "Human Resource Management",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --inspect src/index.js",
+    "watch": "sass -w src/resources/scss/app.scss src/public/css/app.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs",
+    "js",
+    "mysql"
+  ],
+  "author": "Teff",
+  "license": "ISC"
+}

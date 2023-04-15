@@ -1,0 +1,180 @@
+<!-- Navbar -->
+
+<nav
+    class='layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme'
+    id='layout-navbar'
+>
+    <div
+        class='layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none'
+    >
+        <a class='nav-item nav-link px-0 me-xl-4' href='javascript:void(0)'>
+            <i class='bx bx-menu bx-sm'></i>
+        </a>
+    </div>
+
+    <div
+        class='navbar-nav-right d-flex align-items-center'
+        id='navbar-collapse'
+    >
+        <!-- Search -->
+        <div class='navbar-nav align-items-center'>
+            <div class='nav-item d-flex align-items-center'>
+                <i class='bx bx-search fs-4 lh-0'></i>
+                <input
+                    type='text'
+                    class='form-control border-0 shadow-none'
+                    placeholder='Search...'
+                    aria-label='Search...'
+                />
+            </div>
+        </div>
+        <!-- /Search -->
+
+        <ul class='navbar-nav flex-row align-items-center ms-auto'>
+            <!-- Place this tag where you want the button to render. -->
+            <li class='nav-item lh-1 me-3'>
+
+                <div class='dropdown dropstart'>
+                    <a
+                        class='nav-link dropdown-toggle hide-arrow'
+                        href='#'
+                        role='button'
+                        id='dropdownMenuNotification'
+                        data-bs-toggle='dropdown'
+                        aria-expanded='false'
+                    >
+                        <i class='tf-icons bx bx-bell'></i>
+                    </a>
+
+                    <ul
+                        class='dropdown-menu'
+                        aria-labelledby='dropdownMenuNotification'
+                    >
+                        <li><h2 class='dropdown-header'>Notifications</h2></li>
+                        <li><a class='dropdown-item' href='#'>Action</a></li>
+                        <li><a class='dropdown-item' href='#'>Another action</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- User -->
+            <li class='nav-item navbar-dropdown dropdown-user dropdown'>
+                <a
+                    class='nav-link dropdown-toggle hide-arrow'
+                    href='javascript:void(0);'
+                    data-bs-toggle='dropdown'
+                >
+                    <div class='avatar avatar-online'>
+                        <img
+                            id="user-avatar-nav"
+                            src='/img/avatars/9-D.jpg'
+                            alt = "avt-user"
+                            class='w-px-40 h-auto rounded-circle'
+                        />
+                    </div>
+                </a>
+
+                <ul class='dropdown-menu dropdown-menu-end'>
+                    <li>
+                        <a class='dropdown-item' href='#'>
+                            <div class='d-flex'>
+                                <div class='flex-shrink-0 me-3'>
+                                    <div class='avatar avatar-online'>
+                                        <img
+                                            id='user-avatar'
+                                            src='/img/avatars/9-D.jpg'
+                                            alt = "avt-user"
+                                            class='w-px-40 h-auto rounded-circle'
+                                        />
+                                    </div>
+                                </div>
+                                <div class='flex-grow-1'>
+                                    <span id='user-name' class='fw-semibold d-block'>Mỹ Duyên</span>
+                                    <small id='user-role' class='text-muted'>Admin</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <div class='dropdown-divider'></div>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='#'>
+                            <i class='bx bx-user me-2'></i>
+                            <span class='align-middle'>My Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='#'>
+                            <i class='bx bx-cog me-2'></i>
+                            <span class='align-middle'>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='#'>
+                            <span
+                                class='d-flex align-items-center align-middle'
+                            >
+                                <i
+                                    class='flex-shrink-0 bx bx-credit-card me-2'
+                                ></i>
+                                <span
+                                    class='flex-grow-1 align-middle'
+                                >Billing</span>
+                                <span
+                                    class='flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20'
+                                >4</span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <div class='dropdown-divider'></div>
+                    </li>
+                    <li>
+                        <button class='dropdown-item' id="logout-btn" type="button">
+                            <i class='bx bx-power-off me-2'></i>
+                            <span class='align-middle'>Log Out</span>
+                        </button>
+                    </li>
+                </ul>
+            </li>
+            <!--/ User -->
+        </ul>
+    </div>
+</nav>
+<!--/ Log out hide form -->
+<form id="form-logout-blog" method='GET' hidden></form>
+<script type="text/javascript"> 
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var formLog = document.getElementById('form-logout-blog');
+        var btnLogout = document.getElementById('logout-btn');
+        const userNameSpan = document.getElementById('user-name');
+        const userRoleSmall = document.getElementById('user-role');
+        const userImg = document.getElementById('user-avatar');
+        const userImgNav = document.getElementById('user-avatar-nav');
+
+
+        console.log(formLog);
+        btnLogout.onclick = function(e) {
+            e.preventDefault();
+            const token = localStorage.getItem('auth');
+            if(!token) {
+                window.location.replace("/auth/login");
+            }
+            formLog.action = `/auth/logout/${token}`;
+            localStorage.removeItem('auth');
+            localStorage.removeItem('authData');
+            formLog.submit();           
+        }
+        const adminLinkAvt = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/279090581_3230202363931816_9076952863279850523_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=YJ_ICb_t5XIAX8rBVEM&_nc_ht=scontent.fdad1-2.fna&oh=00_AfCi40ok0jiM3_TuMvDa6lGcQ1VuAjOPS8bpFCsF5HhQ4Q&oe=643E1746";
+        const authData = JSON.parse(localStorage.getItem('authData'));
+        if(authData) {
+            userNameSpan.innerText = authData.Username;
+            userRoleSmall.innerText = authData.Role.trim() === "0" ? "Admin" : "GiV" ;
+            userImg.src = authData.Role.trim() === "0" ? adminLinkAvt : "/img/avatars/9-D.jpg";
+            userImgNav.src = authData.Role.trim() === "0" ? adminLinkAvt : "/img/avatars/9-D.jpg";
+        }
+    });
+</script>
+
+<!-- / Navbar -->

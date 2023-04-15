@@ -1,0 +1,78 @@
+<!-- Form controls -->
+<form action="/blogs/store" method='POST'>
+    <div class='col-md-6'>
+        <div class='card mb-4'>
+            <h5 class='card-header'>Create New Blogs</h5>
+            <div class='card-body'>
+                <div class='mb-3'>
+                    <label for='name' class='form-label'>Name</label>
+                    <input
+                        type='text'
+                        name='name'
+                        class='form-control'
+                        id='name'
+                        placeholder='Name input here...'
+                        required
+                    />
+                </div>
+                <div class='mb-3'>
+                    <label
+                        for='description'
+                        class='form-label'
+                    >Description</label>
+                    <input
+                        class='form-control'
+                        name='description'
+                        type='text'
+                        id='description'
+                        required
+                        placeholder='Description input here...'
+                    />
+                </div>
+                <div class='mb-3'>
+                    <label for='date-string' class='form-label'>Date string</label>
+                    <input
+                        class='form-control'
+                        name='date'
+                        type='text'
+                        id='date-string'
+                        placeholder='Date string input here...'
+                    />
+                </div>
+                <div class='mb-3'>
+                    <label
+                        for='exampleFormControlSelect1'
+                        class='form-label'
+                    >Example select</label>
+                    <select
+                        class='form-select'
+                        id='exampleFormControlSelect1'
+                        aria-label='Default select example'
+                    >
+                        <option selected>Open this select menu</option>
+                        <option value='1'>One</option>
+                        <option value='2'>Two</option>
+                        <option value='3'>Three</option>
+                    </select>
+                </div>
+                <div class='mb-3'>
+                    <label for='content' class='form-label'>Content</label>
+                    <textarea
+                        class='form-control'
+                        required
+                        name='content'
+                        id='content'
+                        rows='3'
+                    ></textarea>
+                </div>
+                <div class='mb-3'>
+                    <button type='submit' class='btn btn-outline-primary'>
+                        <span class='tf-icons bx bx-plus-circle'></span>&nbsp;
+                        Create Blog
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
