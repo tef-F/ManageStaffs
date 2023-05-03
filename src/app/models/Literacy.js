@@ -1,23 +1,20 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Block = sequelize.define(
-    'KHUVUC',
+const { getSequelize } = require('../../config/db');
+const Literacy = getSequelize().define(
+    'literacy',
     {
-        MaKhu: {
+        id: {
             type: DataTypes.STRING(10),
             allowNull: false,
             primaryKey: true,
         },
-        TenKhu: {
+        specialization: {
             type: DataTypes.STRING(50),
         },
-        DiaChi: {
+        academicLevel: {
             type: DataTypes.STRING(50),
-        },
-        LienHe: {
-            type: DataTypes.STRING(255),
         }
     },
 );
-sequelize.sync();
-module.exports = Block;
+getSequelize().sync();
+module.exports = Literacy;

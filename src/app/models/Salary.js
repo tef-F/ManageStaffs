@@ -1,23 +1,23 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Salary = sequelize.define(
-    'LUONG',
+const { getSequelize } = require('../../config/db');
+const Salary = getSequelize().define(
+    'salary',
     {
-        BacLuong: {
+        salaryScale: {
             type: DataTypes.STRING(10),
             allowNull: false,
             primaryKey: true,
         },
-        LuongCB: {
+        basicRate: {
             type: DataTypes.INTEGER,
         },
-        HSLuong: {
+        coefficientsSalary: {
             type: DataTypes.NUMBER,
         },
-        HSPhuCap: {
+        allowanceCoefficient: {
             type: DataTypes.NUMBER,
         },
     },
 );
-sequelize.sync();
+getSequelize().sync();
 module.exports = Salary;

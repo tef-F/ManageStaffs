@@ -82,7 +82,7 @@
                                     <div class='avatar avatar-online'>
                                         <img
                                             id='user-avatar'
-                                            src='/img/avatars/9-D.jpg'
+                                            src='/img/avatars/unknown-avt.jpg'
                                             alt = "avt-user"
                                             class='w-px-40 h-auto rounded-circle'
                                         />
@@ -99,9 +99,19 @@
                         <div class='dropdown-divider'></div>
                     </li>
                     <li>
-                        <a class='dropdown-item' href='#'>
+                        <a class='dropdown-item' href='/me/profile'>
                             <i class='bx bx-user me-2'></i>
                             <span class='align-middle'>My Profile</span>
+                        </a>
+                    </li>
+                    <li id="li-request">
+                        <a class='dropdown-item' href='/me/request/'>
+                            <i class='bx bx-notification me-2'></i>
+                            <span class='align-middle'>Request</span>
+                            <span
+                                id="dot-notification"
+                                class='flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20'
+                            >1</span>
                         </a>
                     </li>
                     <li>
@@ -110,7 +120,7 @@
                             <span class='align-middle'>Settings</span>
                         </a>
                     </li>
-                    <li>
+                    {{!-- <li>
                         <a class='dropdown-item' href='#'>
                             <span
                                 class='d-flex align-items-center align-middle'
@@ -126,7 +136,7 @@
                                 >4</span>
                             </span>
                         </a>
-                    </li>
+                    </li> --}}
                     <li>
                         <div class='dropdown-divider'></div>
                     </li>
@@ -152,7 +162,8 @@
         const userRoleSmall = document.getElementById('user-role');
         const userImg = document.getElementById('user-avatar');
         const userImgNav = document.getElementById('user-avatar-nav');
-
+        const liRequest = document.getElementById('li-request');
+        const dot = document.getElementById('dot-notification');
 
         console.log(formLog);
         btnLogout.onclick = function(e) {
@@ -166,14 +177,29 @@
             localStorage.removeItem('authData');
             formLog.submit();           
         }
-        const adminLinkAvt = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-6/279090581_3230202363931816_9076952863279850523_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=YJ_ICb_t5XIAX8rBVEM&_nc_ht=scontent.fdad1-2.fna&oh=00_AfCi40ok0jiM3_TuMvDa6lGcQ1VuAjOPS8bpFCsF5HhQ4Q&oe=643E1746";
+        const adminLinkAvt = "https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-1/279090581_3230202363931816_9076952863279850523_n.jpg?stp=dst-jpg_p160x160&_nc_cat=106&ccb=1-7&_nc_sid=f67be1&_nc_ohc=7NpTr2TmdWAAX-F8fgF&_nc_ht=scontent.fdad1-2.fna&oh=00_AfC9m0Qpray5rjqXAiM1GyXHQ-Ko7_eDRHXA5mFSor8tQw&oe=644A1B48";
         const authData = JSON.parse(localStorage.getItem('authData'));
         if(authData) {
-            userNameSpan.innerText = authData.Username;
-            userRoleSmall.innerText = authData.Role.trim() === "0" ? "Admin" : "GiV" ;
-            userImg.src = authData.Role.trim() === "0" ? adminLinkAvt : "/img/avatars/9-D.jpg";
-            userImgNav.src = authData.Role.trim() === "0" ? adminLinkAvt : "/img/avatars/9-D.jpg";
+            userNameSpan.innerText = authData.username;
+            userRoleSmall.innerText = authData.role.trim() === "0" ? "Admin" : "GiV" ;
+            userImg.src = authData.role.trim() === "0" ? adminLinkAvt : "/img/avatars/unknown-avt.jpg";
+            userImgNav.src = authData.role.trim() === "0" ? adminLinkAvt : "/img/avatars/unknown-avt.jpg";
+            if(authData.role.trim() != "0") liRequest.style.display = 'none';
+            
         }
+        
+        $.ajax({
+            url: '/auth/api/count-temp',
+            type: 'GET',
+            dataType: 'json',
+        }).done(function(result) {
+            if(!result) {
+                dot.style.display = 'none';
+            }
+            dot.textContent = result;
+            console.log(result);                
+        });
+        
     });
 </script>
 

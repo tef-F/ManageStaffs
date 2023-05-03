@@ -1,0 +1,78 @@
+<div class='card'>
+    <h5 class='card-header'>Table Basic</h5>
+    <div class='table-responsive text-nowrap'>
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class='table-border-bottom-0'>
+                {{#each users}}
+                    <tr>
+                        <td><i class='fab fa-react fa-lg text-info me-3'></i>
+                            <strong>{{this.username}}</strong></td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.departmentId}}</td>
+                        <td><span
+                                class='badge bg-label-warning me-1'
+                            >Pending</span></td>
+                        <td>
+                            <div>
+                                <button
+                                    type='button'
+                                    data-id={{this.id}}
+                                    id="btn-accept"
+                                    class='btn btn btn-outline-success'
+                                >
+                                Accept
+                                </button>
+                                <button
+                                    type='button'
+                                    id="btn-decline"
+                                    data-id={{this.id}}
+                                    class='btn btn btn-outline-danger'
+                                >
+                                    Decline</i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--/ Accept hide form -->
+<form id="form-accept-blog" method='POST' hidden></form>
+<!--/ Decline hide form -->
+<form id="form-decline-blog" method='POST' hidden></form>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        var acceptForm = document.getElementById('form-accept-blog');
+        var declineForm = document.getElementById('form-decline-blog');
+        var btnAccept = $("button[id*='btn-accept']");
+        var btnDecline = $("button[id*='btn-decline']");
+
+        btnAccept.on('click', function(event){
+            event.preventDefault();
+            var _id = $(this).attr('data-id');
+           // console.log(_id);
+            acceptForm.action = `/auth/accept/${_id}`;
+            acceptForm.submit();
+        })
+         btnDecline.on('click', function(event){
+            event.preventDefault();
+            var _id = $(this).attr('data-id');
+            //console.log(_id);
+            declineForm.action = `/auth/accept/${_id}?_method=DELETE`;
+            declineForm.submit();
+        })
+
+    });
+    
+</script>

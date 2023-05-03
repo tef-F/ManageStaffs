@@ -1,0 +1,36 @@
+<!-- Form controls -->
+<form action="/positions/{{position.id}}?_method=PUT" method='POST'>
+    <div class='col-md-6'>
+        <div class='card mb-4'>
+            <h5 class='card-header'>Edit Positions</h5>
+            <div class='card-body'>
+                <div class='mb-3'>
+                    <label for='fullName' class='form-label'>Name Position</label>
+                    {{!-- <input
+                        type='text'
+                        name='id'
+                        class='form-control'
+                        id='fullName'
+                        value="{{position.id}}"
+                        required
+                    /> --}}
+                     <input
+                        type='text'
+                        name='name'
+                        class='form-control'
+                        id='fullName'
+                        value="{{position.name}}"
+                        required
+                    />
+                </div>              
+                <div class='mb-3'>
+                    <button type='submit' class='btn btn-outline-primary'>
+                        <span class='tf-icons bx bx-plus-circle'></span>&nbsp;
+                        Update Position
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

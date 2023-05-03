@@ -1,0 +1,40 @@
+<!-- Form controls -->
+<form action="/positions/store" method='POST'>
+    <div class='col-md-6'>
+        <div class='card mb-4'>
+            <h5 class='card-header'>Create New Positions</h5>
+            <div class='card-body'>
+                 <div class='mb-3'>
+                    <label for='fullName' class='form-label'>ID</label>
+                    <input
+                        type='text'
+                        name='id'
+                        class='form-control'
+                        id='fullName'
+                        placeholder='id input here...'
+                        required
+                    />
+                </div>
+                <div class='mb-3'>
+                    <label for='fullName' class='form-label'>Name</label>
+                    <input
+                        type='text'
+                        name='name'
+                        class='form-control'
+                        id='fullName'
+                        placeholder='Name input here...'
+                        required
+                    />
+                </div>
+                
+                <div class='mb-3'>
+                    <button type='submit' class='btn btn-outline-primary'>
+                        <span class='tf-icons bx bx-plus-circle'></span>&nbsp;
+                        Create Position
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>

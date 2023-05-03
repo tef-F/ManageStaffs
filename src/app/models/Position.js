@@ -1,21 +1,22 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Position = sequelize.define(
-    'CHUCVU',
+const { getSequelize } = require('../../config/db');
+const Position = getSequelize().define(
+    'position',
     {
-        MaCV: {
+        id: {
             type: DataTypes.STRING(10),
             allowNull: false,
             primaryKey: true,
         },
-        TenCV: {
+        name: {
             type: DataTypes.STRING(50),
         },
     },
     {
+        // options
         timestamps: false,
         hasTrigger: true,
     },
 );
-sequelize.sync();
+getSequelize().sync();
 module.exports = Position;

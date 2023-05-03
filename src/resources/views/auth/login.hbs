@@ -114,9 +114,9 @@
                     </a>
                 </div>
                 <!-- /Logo -->
-                <h4 class='mb-2'>Welcome to Sneat! 👋</h4>
-                <p class='mb-4'>Please sign-in to your account and start the
-                    adventure</p>
+                <h4 class='mb-2'>Welcome to VKU! 👋</h4>
+                {{!-- <p class='mb-4'>Please sign-in to your account and start the
+                    adventure</p> --}}
 
                 <form
                     id='formAuthentication'
@@ -193,7 +193,7 @@
     </div>
 </div>
 
-<script type="text/javascript" >
+<script >
     document.addEventListener('DOMContentLoaded', (event) => {
         /*var formData = {
                 email: $("#email").attr('value'),
@@ -219,7 +219,14 @@
                 console.log(result);
                 localStorage.setItem("auth", result.token);
                 localStorage.setItem("authData", JSON.stringify(result.data));
-                window.location.replace("/me/stored/staffs");
+                const authData = JSON.parse(localStorage.getItem('authData'));
+                console.log(authData.role.trim());
+                if(authData.role.trim() === '3') {
+                    window.location.replace("/me/profile");
+                } else {
+                    window.location.replace("/me/stored/staffs");
+                }
+                
             });
             
         });

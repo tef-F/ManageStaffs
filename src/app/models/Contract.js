@@ -1,23 +1,23 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Contract = sequelize.define(
-    'HOPDONGLAODONG',
+const { getSequelize } = require('../../config/db');
+const Contract = getSequelize().define(
+    'labor_contract',
     {
-        MaHD: {
+        id: {
             type: DataTypes.STRING(10),
             allowNull: false,
             primaryKey: true,
         },
-        LoaiHD: {
+        type: {
             type: DataTypes.STRING(50),
         },
-        TuNgay: {
+        joinDate: {
             type: DataTypes.DATE,
         },
-        DenNgay: {
+        finishDate: {
             type: DataTypes.DATE,
         },
     },
 );
-sequelize.sync();
+getSequelize().sync();
 module.exports = Contract;

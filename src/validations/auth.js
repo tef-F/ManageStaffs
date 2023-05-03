@@ -10,6 +10,7 @@ const registerValidator = (data) => {
             .min(8).max(225)
             .required(),
         repeatPassword: Joi.ref('password'),
+        departmentId: Joi.string().min(1).max(50).required(),  
     });
 
     return rule.validate(data);

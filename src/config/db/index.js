@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const sql = require('mssql');
+// const sql = require('mssql');
 const { Sequelize, Model } = require('sequelize');
 const dotenv = require('dotenv').config();
 
@@ -12,25 +12,40 @@ async function connect() {
         console.log('\nConnect Faill !!!', error);
     }
 }
+let sequelize = null;
 
-const sequelize = new Sequelize(
-    process.env.DB_NAME,
-    process.env.DB_USER,
-    process.env.DB_PASSWORD,
-    {
-        port: 1433,
-        host: 'localhost',
-        dialect: 'mssql',
-        dialectOptions: {
-            instancename: 'SERVER_ROOT',
+function initializeConnection(severName = 'SERVER_ROOT') {
+    // console.log(severName);
+    sequelize = new Sequelize(
+        process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD,
+        {
+            port: 1433,
+            host: 'localhost',
+            dialect: 'mssql',
+            dialectOptions: {
+                instancename: severName,
+            },
+            define: {
+                freezeTableName: true,
+                noPrimaryKey: true,
+                timestamps: false,
+            },
         },
-        define: {
-            freezeTableName: true,
-            noPrimaryKey: true,
-            timestamps: false,
-        },
-    },
-);
+    );
+}
+initializeConnection();
+
+function getSequelize() {
+    return sequelize;
+    
+}
+
+function closeConnection() {
+    sequelize.close();
+}
+
 sequelize.afterDefine((model) => {
     if (model.prototype instanceof Model) {
         model.prototype.toObject = function () {
@@ -49,4 +64,11 @@ async function connectMSSQL() {
         console.log('\nConnect Faill to MSSQL !!!', error);
     }
 }
-module.exports = { connect, connectMSSQL, sequelize };
+module.exports = {
+    connect,
+    connectMSSQL,
+    initializeConnection,
+    getSequelize,
+    sequelize,
+    closeConnection,
+};

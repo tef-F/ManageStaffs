@@ -113,21 +113,18 @@
                         >Sneat</span>
                     </a>
                 </div>
-                <!-- /Logo -->
+                {{!-- <!-- /Logo -->
                 <h4 class='mb-2'>Adventure starts here 🚀</h4>
-                <p class='mb-4'>Make your app management easy and fun!</p>
+                <p class='mb-4'>Make your app management easy and fun!</p> --}}
 
                 <form
                     id='formAuthentication'
                     class='mb-3'
-                    action='/auth/store'
+                    action='/auth/store-temp'
                     method='POST'
                 >
                     <div class='mb-3'>
-                        <label
-                            for='last-name'
-                            class='form-label'
-                        >Last Name</label>
+                        <label for='last-name' class='form-label'>Last Name</label>
                         <input
                             type='text'
                             class='form-control'
@@ -138,10 +135,7 @@
                         />
                     </div>
                     <div class='mb-3'>
-                        <label
-                            for='first-name'
-                            class='form-label'
-                        >First Name</label>
+                        <label for='first-name' class='form-label'>First Name</label>
                         <input
                             type='text'
                             class='form-control'
@@ -149,6 +143,23 @@
                             name='firstName'
                             placeholder='Enter your first name'
                         />
+                    </div>
+                    <div class='mb-3'>
+                        <label for='departmentId' class='form-label'>Department
+                            Id</label>
+                        <select
+                            name='departmentId'
+                            class='form-select'
+                            id='departmentId'
+                            aria-label='Default select example'
+                        >
+                            <option selected>Open this select menu</option>
+                            {{#each MaPB}}
+                                <option
+                                    value={{this.MaPB}}
+                                >{{this.MaPB}}</option>
+                            {{/each}}
+                        </select>
                     </div>
                     <div class='mb-3'>
                         <label for='email' class='form-label'>Email</label>
@@ -180,11 +191,9 @@
                         </div>
                     </div>
 
-                     <div class='mb-3 form-repeat-password-toggle'>
-                        <label
-                            class='form-label'
-                            for='repeat-password'
-                        >Repeat Password</label>
+                    <div class='mb-3 form-repeat-password-toggle'>
+                        <label class='form-label' for='repeat-password'>Repeat
+                            Password</label>
                         <div class='input-group input-group-merge'>
                             <input
                                 type='password'
@@ -200,14 +209,13 @@
                         </div>
                     </div>
 
-
                     <div class='mb-3'>
                         <div class='form-check'>
                             <input
                                 class='form-check-input'
                                 type='checkbox'
                                 id='terms-conditions'
-                                {{!-- name='terms' --}}
+                                {{! name='terms' }}
                             />
                             <label
                                 class='form-check-label'

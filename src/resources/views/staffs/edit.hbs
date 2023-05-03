@@ -1,77 +1,126 @@
 <!-- Form controls -->
-<form action="/blogs/{{blog._id}}?_method=PUT" method='POST'>
+<form action="/staffs/{{staff.id}}?_method=PUT" method='POST'>
     <div class='col-md-6'>
         <div class='card mb-4'>
-            <h5 class='card-header'>Update Blogs</h5>
+            <h5 class='card-header'>Edit Staffs</h5>
             <div class='card-body'>
                 <div class='mb-3'>
-                    <label for='name' class='form-label'>Name</label>
+                    <label for='fullName' class='form-label'>Full Name</label>
                     <input
                         type='text'
-                        name='name'
+                        name='fullName'
                         class='form-control'
-                        id='name'
-                        placeholder='Name input here...'
+                        id='fullName'
+                        value="{{staff.fullName}}"
                         required
-                        value="{{blog.name}}"
                     />
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='description'
+                        for='departmentId'
                         class='form-label'
-                    >Description</label>
-                    <input
-                        class='form-control'
-                        name='description'
-                        type='text'
-                        id='description'
-                        required
-                        placeholder='Description input here...'
-                        value="{{blog.description}}"
-                    />
-                </div>
-                <div class='mb-3'>
-                    <label for='date-string' class='form-label'>Date string</label>
-                    <input
-                        class='form-control'
-                        name='date'
-                        type='text'
-                        id='date-string'
-                        placeholder='Date string input here...'
-                        value="{{blog.date}}"
-                    />
-                </div>
-                <div class='mb-3'>
-                    <label
-                        for='exampleFormControlSelect1'
-                        class='form-label'
-                    >Example select</label>
+                    >Department Id</label>
                     <select
+                        name="departmentId"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='departmentId'
                         aria-label='Default select example'
                     >
-                        <option selected>Open this select menu</option>
-                        <option value='1'>One</option>
-                        <option value='2'>Two</option>
-                        <option value='3'>Three</option>
+                        <option selected value="{{staff.departmentId}}">{{staff.departmentId}}</option>
+                        {{#each MaPB}}
+                        <option value={{this.MaPB}}>{{this.MaPB}}</option>
+                        {{/each}}
                     </select>
                 </div>
                 <div class='mb-3'>
-                    <label for='content' class='form-label'>Content</label>
-                    <textarea
-                        class='form-control'
-                        required
-                        name='content'
-                        id='content'
-                        rows='3'
-                    >{{blog.content}}</textarea>
+                    <label
+                        for='literacyId'
+                        class='form-label'
+                    >Literacy Id</label>
+                    <select
+                        name="literacyId"
+                        class='form-select'
+                        id='literacyId'
+                        aria-label='Default select example'
+                    >
+                        <option selected value="{{staff.literacyId}}">{{staff.literacyId}}</option>
+                        {{#each MaTDHV}}
+                        <option value={{this.MaTDHV}}>{{this.MaTDHV}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class='mb-3'>
+                    <label
+                        for='salaryScale'
+                        class='form-label'
+                    >Salary Scale</label>
+                    <select
+                        name="salaryScale"
+                        class='form-select'
+                        id='salaryScale'
+                        aria-label='Default select example'
+                    >
+                        <option selected value="{{staff.salaryScale}}">{{staff.salaryScale}}</option>
+                        {{#each BacLuong}}
+                        <option value={{this.BacLuong}}>{{this.BacLuong}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class='mb-3'>
+                    <label
+                        for='area'
+                        class='form-label'
+                    >Area</label>
+                    <select
+                        name="area"
+                        class='form-select'
+                        id='area'
+                        aria-label='Default select example'
+                    >
+                        <option selected value="{{staff.area}}">{{staff.area}}</option>
+                        {{#each MaKhu}}
+                        <option value={{this.MaKhu}}>{{this.MaKhu}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class='mb-3'>
+                    <label
+                        for='position'
+                        class='form-label'
+                    >Position</label>
+                    <select
+                        name="position"
+                        class='form-select'
+                        id='position'
+                        aria-label='Default select example'
+                    >
+                        <option selected value="{{staff.position}}">{{staff.position}}</option>
+                        {{#each MaCV}}
+                        <option value={{this.MaCV}}>{{this.MaCV}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class='mb-3'>
+                    <label
+                        for='laborContract'
+                        class='form-label'
+                    >Labor Contract</label>
+                    <select
+                        name="laborContract"
+                        class='form-select'
+                        id='laborContract'
+                        aria-label='Default select example'
+                    >
+                        <option selected value="{{staff.laborContract}}">{{staff.laborContract}}</option>
+                       {{#each MaHD}}
+                        <option value={{this.MaHD}}>{{this.MaHD}}</option>
+                        {{/each}}
+                    </select>
                 </div>
                 <div class='mb-3'>
                     <button type='submit' class='btn btn-outline-primary'>
                         <span class='tf-icons bx bx-plus-circle'></span>&nbsp;
-                        Update Blog
+                        Update Staff
                     </button>
                 </div>
             </div>

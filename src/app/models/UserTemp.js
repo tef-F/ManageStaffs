@@ -1,7 +1,7 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { getSequelize } = require('../../config/db');
-const User = getSequelize().define(
-    'account',
+const {getSequelize } = require('../../config/db');
+const UserTemp = getSequelize().define(
+    'account_temp',
     {
         id: {
             type: DataTypes.STRING(10),
@@ -17,22 +17,18 @@ const User = getSequelize().define(
             trim: true,
             required: true,
         },
-        avatar: {
-            type: DataTypes.STRING(50),
-            allowNull: true,
-        },
         email: {
             type: DataTypes.STRING(50),
         },
-        role: {
+        departmentId: {
             type: DataTypes.STRING(10),
         },
-        staffId: {
-            type: DataTypes.STRING(10),
-            allowNull: true,
-
-        }
+    },
+    {
+        // options
+        timestamps: false,
+        hasTrigger: true,
     },
 );
 getSequelize().sync();
-module.exports = User;
+module.exports = UserTemp;

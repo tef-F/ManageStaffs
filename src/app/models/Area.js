@@ -1,20 +1,23 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Academic = sequelize.define(
-    'TRINHDO',
+const { getSequelize } = require('../../config/db');
+const Area = getSequelize().define(
+    'area',
     {
-        MaTDHV: {
+        id: {
             type: DataTypes.STRING(10),
             allowNull: false,
             primaryKey: true,
         },
-        TenChuyenNganh: {
+        name: {
             type: DataTypes.STRING(50),
         },
-        TrinhDoHocVan: {
+        address: {
             type: DataTypes.STRING(50),
+        },
+        contact: {
+            type: DataTypes.STRING(255),
         }
     },
 );
-sequelize.sync();
-module.exports = Academic;
+getSequelize().sync();
+module.exports = Area;

@@ -5,41 +5,41 @@
             <h5 class='card-header'>Create New Staffs</h5>
             <div class='card-body'>
                 <div class='mb-3'>
-                    <label for='name' class='form-label'>Ho Ten</label>
+                    <label for='fullName' class='form-label'>Full Name</label>
                     <input
                         type='text'
-                        name='HoTen'
+                        name='fullName'
                         class='form-control'
-                        id='hoten'
-                        placeholder='Ho Ten input here...'
+                        id='fullName'
+                        placeholder='Full Name input here...'
                         required
                     />
                 </div>
                 <div class="mb-3">
-                    <label for="ngaysinh" class="col-md-2 col-form-label">Ngay Sinh</label>
+                    <label for="DoB" class="col-md-2 col-form-label">Date of Birth</label>
                     <div class="col-md-12">
-                        <input class="form-control" name="NgaySinh" type="date" value="2021-06-18" id="ngaysinh" />
+                        <input class="form-control" name="DoB" type="date" value="2021-06-18" id="DoB" />
                     </div>
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='quequan'
+                        for='homeTown'
                         class='form-label'
-                    >Que Quan</label>
+                    >Home Town</label>
                     <input
                         class='form-control'
-                        name='QueQuan'
+                        name='homeTown'
                         type='text'
-                        id='quequan'
+                        id='homeTown'
                         required
-                        placeholder='Que Quan input here...'
+                        placeholder='Home Town input here...'
                     />
                 </div>
                 <div class="mb-3">
-                    <small class="text-light fw-semibold">Gioi Tinh</small>
+                    <small class="text-light fw-semibold">Sex</small>
                     <div class="form-check">
                         <input
-                            name="GioiTinh"
+                            name="sex"
                             class="form-check-input"
                             type="radio"
                             value="Nam"
@@ -50,7 +50,7 @@
                     </div>  
                     <div class="form-check mt-3">
                         <input
-                            name="GioiTinh"
+                            name="sex"
                             class="form-check-input"
                             type="radio"
                             value="Nu"
@@ -60,7 +60,7 @@
                     </div>
                     <div class="form-check mt-3">
                         <input
-                            name="GioiTinh"
+                            name="sex"
                             class="form-check-input"
                             type="radio"
                             value="Khac"
@@ -71,54 +71,54 @@
                     
                 </div>
                 <div class='mb-3'>
-                    <label for='date-string' class='form-label'>Dan Toc</label>
+                    <label for='date-string' class='form-label'>Nation</label>
                     <input
                         class='form-control'
-                        name='DanToc'
+                        name='nation'
                         type='text'
                         id='date-string'
-                        placeholder='Dan Toc input here...'
+                        placeholder='Nation input here...'
                     />
                 </div>
                 <div class='mb-3'>
-                    <label for='date-string' class='form-label'>So Dien Thoai</label>
+                    <label for='date-string' class='form-label'>Phone Number</label>
                     <input
                         class='form-control'
-                        name='SoDienThoai'
+                        name='phoneNumber'
                         type='number'
-                        id='date-string'
-                        placeholder='So Dien Thoai input here...'
+                        id='phoneNumber'
+                        placeholder='Phone Number input here...'
                     />
                 </div>
 
                 <div class="mb-3">
-                    <label for="ngaytotnghiep" class="col-md-2 col-form-label">Ngay Tot Nghiep</label>
+                    <label for="graduationDate" class="col-md-2 col-form-label">Graduation Date</label>
                     <div class="col-md-12">
-                        <input class="form-control" name="NgayTotNgiep" type="date" value="2021-06-18" id="ngaytotnghiep" />
+                        <input class="form-control" name="graduationDate" type="date" value="2021-06-18" id="graduationDate" />
                     </div>
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='truongtheohoc'
+                        for='university'
                         class='form-label'
-                    >Truong theo hoc</label>
+                    >University</label>
                     <input
                         class='form-control'
-                        name='TruongTheoHoc'
+                        name='university'
                         type='text'
-                        id='truongtheohoc'
-                        placeholder='Truong Theo Hoc input here...'
+                        id='university'
+                        placeholder='University input here...'
                     />
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='exampleFormControlSelect1'
+                        for='departmentId'
                         class='form-label'
-                    >MaPB</label>
+                    >Department Id</label>
                     <select
-                        name="MaPB"
+                        name="departmentId"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='departmentId'
                         aria-label='Default select example'
                     >
                         <option selected>Open this select menu</option>
@@ -129,13 +129,13 @@
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='exampleFormControlSelect1'
+                        for='literacyId'
                         class='form-label'
-                    >MaTDHV</label>
+                    >Literacy Id</label>
                     <select
-                        name="MaTDHV"
+                        name="literacyId"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='literacyId'
                         aria-label='Default select example'
                     >
                         <option selected>Open this select menu</option>
@@ -146,13 +146,13 @@
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='exampleFormControlSelect1'
+                        for='salaryScale'
                         class='form-label'
-                    >BacLuong</label>
+                    >Salary Scale</label>
                     <select
-                        name="BacLuong"
+                        name="salaryScale"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='salaryScale'
                         aria-label='Default select example'
                     >
                         <option selected>Open this select menu</option>
@@ -163,13 +163,13 @@
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='exampleFormControlSelect1'
+                        for='area'
                         class='form-label'
-                    >MaKhu</label>
+                    >Area</label>
                     <select
-                        name="MaKhu"
+                        name="area"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='area'
                         aria-label='Default select example'
                     >
                         <option selected>Open this select menu</option>
@@ -180,13 +180,13 @@
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='exampleFormControlSelect1'
+                        for='position'
                         class='form-label'
-                    >MaCV</label>
+                    >Position</label>
                     <select
-                        name="MaCV"
+                        name="position"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='position'
                         aria-label='Default select example'
                     >
                         <option selected>Open this select menu</option>
@@ -197,13 +197,13 @@
                 </div>
                 <div class='mb-3'>
                     <label
-                        for='exampleFormControlSelect1'
+                        for='laborContract'
                         class='form-label'
-                    >MaHD</label>
+                    >Labor Contract</label>
                     <select
-                        name="MaHD"
+                        name="laborContract"
                         class='form-select'
-                        id='exampleFormControlSelect1'
+                        id='laborContract'
                         aria-label='Default select example'
                     >
                         <option selected>Open this select menu</option>

@@ -1,56 +1,81 @@
 const { DataTypes, Sequelize } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Staff = sequelize.define('NHANVIEN', {
-    MaNV: {
-        type: DataTypes.STRING(10),
-        allowNull: false,
-        primaryKey: true,
-        trim: true,
+const { getSequelize } = require('../../config/db');
+const Staff = getSequelize().define(
+    'staff',
+    {
+        id: {
+            type: DataTypes.STRING(10),
+            allowNull: false,
+            primaryKey: true,
+            unique: true,
+        },
+        fullName: {
+            type: DataTypes.STRING(50),
+        },
+        DoB: {
+            type: DataTypes.DATEONLY,
+            allowNull: true,
+        },
+        homeTown: {
+            type: DataTypes.STRING(50),
+            allowNull: true,
+
+        },
+        sex: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+
+        },
+        nation: {
+            type: DataTypes.STRING(30),
+            allowNull: true,
+
+        },
+        phoneNumber: {
+            type: DataTypes.NUMBER,
+            allowNull: true,
+
+        },
+        graduationDate: {
+            type: DataTypes.DATE,
+            allowNull: true,
+        },
+        university: {
+            type: DataTypes.STRING(50),
+            allowNull: true,
+        },
+        departmentId: {
+            type: DataTypes.STRING(10),
+        },
+        literacyId: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+
+        },
+        salaryScale: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+
+        },
+        area: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+
+        },
+        position: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+
+        },
+        laborContract: {
+            type: DataTypes.STRING(10),
+            allowNull: true,
+
+        },
     },
-    HoTen: {
-        type: DataTypes.STRING(50),
+    {
+        timestamps: false,
     },
-    NgaySinh: {
-        type: DataTypes.DATE,
-    },
-    QueQuan: {
-        type: DataTypes.STRING(50),
-    },
-    GioiTinh: {
-        type: DataTypes.STRING(10),
-    },
-    DanToc: {
-        type: DataTypes.STRING(30),
-    },
-    SoDienThoai: {
-        type: DataTypes.NUMBER,
-    },
-    NgayTotNghiep: {
-        type: DataTypes.DATE,
-        allowNull: true,
-    },
-    TruongTheoHoc: {
-        type: DataTypes.STRING(50),
-        allowNull: true,
-    },
-    MaPB: {
-        type: DataTypes.STRING(10),
-    },
-    MaTDHV: {
-        type: DataTypes.STRING(10),
-    },
-    BacLuong: {
-        type: DataTypes.STRING(10),
-    },
-    MaKhu: {
-        type: DataTypes.STRING(10),
-    },
-    MaCV: {
-        type: DataTypes.STRING(10),
-    },
-    MaHD: {
-        type: DataTypes.STRING(10),
-    },
-});
-sequelize.sync();
+);
+getSequelize().sync();
 module.exports = Staff;

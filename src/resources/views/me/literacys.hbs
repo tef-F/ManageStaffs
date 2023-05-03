@@ -1,7 +1,7 @@
 <!-- Hoverable Table rows -->
 <form class='card' name="container-form" id="container-form" method="POST" action="/blogs/handle-form-actions">
     <div class='me-3 d-flex align-items-center'>
-        <h5 class='card-header p-2 flex-grow-1 mx-3'>My Staffs</h5>
+        <h5 class='card-header p-2 flex-grow-1 mx-3'>Manage Literacys</h5>
         <div class="btn-action p-2 justify-content-between">
             {{!-- <a class="mx-1" href='/staffs/create'>
                 <button type='button' class='btn rounded-pill btn-outline-success'>
@@ -32,15 +32,15 @@
                 <tr>
                     <th>#</th>
                     <th>ID</th>
-                    <th>Full Name</th>
-                    <th>Positon</th>
-                    <th>DepartmentId </th>
-                    <th>Area</th>
+                    <th>Specialization</th>
+                    <th>Academic Level</th>
+                    {{!-- <th>DepartmentId </th>
+                    <th>Area</th> --}}
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody class='table-border-bottom-0'>
-                {{#each staffs}}
+                {{#each literacys}}
                     <tr>
                         <td>
                             <input class="form-check-input" type="checkbox" id="checked-item" name="checkedIds[]" value="{{this._id}}"/>
@@ -49,17 +49,17 @@
                             class='fab fa-angular fa-lg text-danger me-3'
                             ></i>{{this.id}}
                         </td>
-                        <td><strong>{{this.fullName}}</strong></td>
+                        <td><strong>{{this.specialization}}</strong></td>
                         <td><i
                             class='fab fa-angular fa-lg text-danger me-3'
-                            ></i>{{this.position}}
+                            ></i>{{this.academicLevel}}
                         </td>
-                        <td>{{this.departmentId}}</td>
+                        {{!-- <td>{{this.departmentId}}</td>
                         <td><span
                                 id="area-span"
                                 data-area="{{this.area}}"
                                 class='badge bg-label-warning me-1'
-                            >{{this.area}}</span></td>
+                            >{{this.area}}</span></td> --}}
                         <td>
                             <div class='dropdown'>
                                 <button
@@ -72,7 +72,7 @@
                                 <div class='dropdown-menu'>
                                     <a
                                         class='dropdown-item'
-                                        href='/staffs/edit/{{this.id}}'
+                                        href='/literacys/edit/{{this.id}}'
                                     ><i class='bx bx-edit-alt me-1'></i>
                                         Edit</a>
                                     <a
@@ -89,7 +89,7 @@
                     {{else}}
                     <tr>
                         <td colspan="6" class="text-center">
-                            You have not posted any blog yet. Post a new blog <a href="/staffs/create">here.</a>
+                            You have not posted any blog yet. Post a new blog <a href="/literacys/create">here.</a>
                         </td>
                     </tr>
                 {{/each}}
@@ -152,14 +152,6 @@
         var formContainer = $('#container-form');
         var checkboxAll = $('#checkbox-all');
         var blogItemCheckbox = $('input[name="checkedIds[]"]');
-        /*
-        var area = areaSpan.attr('data-area');
-        if(area.trim() === 'B_K') {
-            areaSpan.addClass('bg-label-primary');
-        } else if(area.trim() === 'B_V') {
-            areaSpan.addClass('bg-label-warning');
-        }
-        */
 
         deleteModal.addEventListener('show.bs.modal', function (event) { 
             var button = event.relatedTarget; 
@@ -167,7 +159,7 @@
             console.log(_id); 
         });
         btnDelete.onclick = function () {
-            formDelete.action = `/staffs/${_id}?_method=DELETE`;
+            formDelete.action = `/literacys/${_id}?_method=DELETE`;
             formDelete.submit();
         }
         // Checkbox all 

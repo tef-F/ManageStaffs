@@ -1,32 +1,32 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../../config/db');
-const Department = sequelize.define(
-    'PHONGBAN',
+const {getSequelize } = require('../../config/db');
+const Department = getSequelize().define(
+    'department',
     {
-        MaPB: {
+        id: {
             type: DataTypes.STRING(10),
             allowNull: false,
             primaryKey: true,
             trim: true,
         },
-        TenPB: {
+        name: {
             type: DataTypes.STRING(50),
         },
-        DiaChi: {
+        address: {
             type: DataTypes.STRING(255),
         },
-        SDTPB: {
+        phoneNumber: {
             type: DataTypes.NUMBER,
         },
         Email: {
             type: DataTypes.STRING(50),
             allowNull: true,
         },
-        MaNVQuanLi: {
+        staffId: {
             type: DataTypes.STRING(10),
             allowNull: true,
         }
     },
 );
-sequelize.sync();
+getSequelize().sync();
 module.exports = Department;

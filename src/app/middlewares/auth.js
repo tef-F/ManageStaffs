@@ -6,9 +6,16 @@ module.exports = {
         if (!token) return res.status(401).json({ message: 'Access Denied' });
 
         try {
-            const payload = tokenHelper.verifyToken(token);
+            const decoded = tokenHelper.verifyToken(token);
+            const exp = decoded.exp;
+            const currentTime = Math.floor(Date.now() / 1000);
+            const timeToExpiration = exp - currentTime;
+            const refreshThreshold = 60 * 30; // 30 minutes
+            if (timeToExpiration < refreshThreshold) {
+                next();
+            }
             // return res.json(payload);
-            next();
+            // next();
         } catch (err) {
             return res.status(400).json({ message: 'Invalid Token', err });
         }
